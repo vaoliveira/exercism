@@ -32,7 +32,7 @@ func RemoveEndOfLineText(text string) string {
 }
 
 func TagWithUserName(lines []string) []string {
-	re := regexp.MustCompile(`User(\s+)(\w+)`)
+	re := regexp.MustCompile(`User\s+(\w+)`)
 	for i, line := range lines {
 		if re.MatchString(line) {
 			user := re.FindStringSubmatch(line)
