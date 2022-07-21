@@ -4,16 +4,15 @@ import "strings"
 
 func IsIsogram(word string) bool {
 	word = strings.ToUpper(word)
-	count := map[byte]int{}
-	for i := 0; i < len(word); i++ {
-		if word[i] == '-' || word[i] == ' ' {
+	count := map[rune]struct{}{}
+	for _, value := range word {
+		if value == '-' || value == ' ' {
 			continue
 		}
-		if _, exists := count[word[i]]; exists {
+		if _, exists := count[value]; exists {
 			return false
-		} else {
-			count[word[i]] = 1
 		}
+		count[value] = struct{}{}
 	}
 	return true
 }
